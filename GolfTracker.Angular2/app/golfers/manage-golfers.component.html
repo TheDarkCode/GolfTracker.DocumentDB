@@ -1,0 +1,62 @@
+<h1>Manage Golfers</h1>
+<p>You can manage golfers from this page.</p>
+<p>
+    <b>IMPORTANT!</b> Make sure you have golf clubs created first before adding golfers.
+</p>
+
+<div class="row">
+    <!-- This ngClass directive says:   
+        -- if shortTable is true, set a CSS class of "col-md-6" to make the table half page wide, otherwise, it's full page width.
+    -->
+    <div [ngClass]="{'col-md-6': shortTable, 'col-md-12': !shortTable}">
+        <button class="btn btn-success" type="button" (click)="showAddGolferForm()">
+            <span class="glyphicon glyphicon-plus"></span> Add Golfer
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Handicap Index</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of golfers; let idx = index">
+                    <td>{{ g.Name }}</td>
+                    <td><span class="glyphicon glyphicon-plus xs" *ngIf="g.IsPlus"></span>{{ g.Handicap }}</td>
+                    <td><button class="glyphicon glyphicon-edit" (click)="updateGolfer(g)"></button></td>
+                    <td><button class="glyphicon glyphicon-trash" (click)="deleteGolfer(g, idx)"></button></td>
+                    <td><button (click)="showRoundForm(g, idx)">Add Round</button></td>
+                    <td><button (click)="viewRounds(g)" *ngIf="g.Rounds != null">Rounds <span class="badge">{{ g.Rounds.length }}</span></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [ngClass]="{'col-md-6':shortTable}">
+
+
+        <!-- Show the form to add a golfer. -->
+        <manage-golfer [golfer]="golfer" [dialogTitle]="dialogTitle" [isVisible]="golferFormIsVisible" (close)="onManageGolferClose()"></manage-golfer>
+
+        <!-- Show the form to add rounds of golf for the selected golfer. -->
+        <add-round [golfer]="golfer" [round]="round" [isVisible]="roundFormIsVisible" (close)="onCloseAddRoundForm()"></add-round>
+
+
+        <!-- View the rounds of golf for the selected golfer. -->
+        <!-- You can optionally pass in the event into the onClose() method.
+
+        <view-rounds [golfer]="golfer" [isVisible]="viewRoundsIsVisible" (close)="onClose($event)"></view-rounds>
+
+        The value of $event would be 'false', from the:
+             this.close.emit(false);
+        ... in the ViewRoundsComponent - closeRoundsPanel() method.
+
+        See the onClose method in this component for more info.
+        -->
+        <view-rounds [golfer]="golfer" [isVisible]="viewRoundsIsVisible" (close)="onCloseViewRounds()"></view-rounds>
+
+    </div>
+</div>

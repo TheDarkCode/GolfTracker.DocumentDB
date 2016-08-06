@@ -1,10 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module("golftracker", ["ngRoute","ui.bootstrap","LocalStorageModule","ngEventAggregator"]);
+    var app = angular.module("golftracker", ["ngRoute","ui.bootstrap","LocalStorageModule"]);
 
     app.constant('mySettings', {
-        apiUriBase: 'http://localhost:55715/',
+        //apiUriBase: 'http://localhost:55715/',
+        apiUriBase: 'http://localhost/golftracker.webapi/'
     });
 
     app.config(["$routeProvider", function ($routeProvider) {

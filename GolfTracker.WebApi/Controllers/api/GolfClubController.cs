@@ -8,7 +8,7 @@ using GolfTracker.WebApi.Repositories;
 
 namespace GolfTracker.WebApi.Controllers.api
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/golfclub")]
     public class GolfClubController : BaseController<GolfClub>
     {
@@ -23,7 +23,7 @@ namespace GolfTracker.WebApi.Controllers.api
 
         #endregion
 
-        //#region Standard CRUD
+        //#region Standard CRUD - these aren't needed here since the CRUD operations are in the BaseController
 
         //[AllowAnonymous]
         //public IEnumerable<GolfClub> Get()

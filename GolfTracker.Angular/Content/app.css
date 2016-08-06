@@ -30,6 +30,8 @@
     padding-top: 10px;
     position: relative;
     padding-bottom: 10px;
+    width: 100%;
+    float: left;
 }
 
 .round-block h3{
@@ -41,6 +43,10 @@
     top: 15px;
     right: 10px;
     color: red;
+}
+
+.round-block p{
+    line-height: 20px;
 }
 
 .panel-heading{
