@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var date_pipe_1 = require('../shared/date.pipe');
-var router_deprecated_1 = require("@angular/router-deprecated");
+var router_1 = require("@angular/router");
 var platform_browser_1 = require('@angular/platform-browser');
 var golfer_service_1 = require('./golfer.service');
 var GolferListComponent = (function () {
@@ -43,6 +43,12 @@ var GolferListComponent = (function () {
         this._golferService.getGolfers()
             .subscribe(function (golfers) { return _this.golfers = golfers; });
     };
+    ///<author>
+    /// KW - clickShowRounds
+    ///</author>
+    ///<summary>
+    /// Show the rounds for the selected golfer, for the unauthenticated user.
+    ///</summary>
     GolferListComponent.prototype.clickShowRounds = function (idx) {
         var player = this.golfers[idx];
         this.golfer = player;
@@ -54,7 +60,7 @@ var GolferListComponent = (function () {
             selector: "golfer-list",
             templateUrl: "app/golfers/golfer-list.component.html",
             pipes: [date_pipe_1.DatePipe],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [golfer_service_1.GolferService, platform_browser_1.Title])
     ], GolferListComponent);

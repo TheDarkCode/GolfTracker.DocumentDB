@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DatePipe } from '../shared/date.pipe';
-import { ROUTER_DIRECTIVES } from "@angular/router-deprecated";
+import { ROUTER_DIRECTIVES } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 
 import { GolferService, IGolfer, ITee, IGolfCourse, IRound } from './golfer.service';
@@ -46,6 +46,12 @@ export class GolferListComponent implements OnInit {
             .subscribe(golfers => this.golfers = golfers);
     }
     
+    ///<author>
+    /// KW - clickShowRounds
+    ///</author>
+    ///<summary>
+    /// Show the rounds for the selected golfer, for the unauthenticated user.
+    ///</summary>
     clickShowRounds(idx:number):void{
         var player = this.golfers[idx];
 
